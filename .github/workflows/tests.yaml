@@ -13,7 +13,7 @@ jobs:
       ##a action checkout puxa o código do repositório para o cliente criado pelo workflow
       - uses: actions/checkout@v6
       ##a action setup-node configura a versão do node-js dentro do ambiente do workflow
-      - uses: actions/setup-node@V6
+      - uses: actions/setup-node@v6
         with:
           node-version: "lts/hydrogen"
       ##npm ci utiliza estritamente as versões declaradas para as libs dentro do package-lock.json
