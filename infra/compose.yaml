@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   database:
+    container_name: "postgres-dev"
     image: postgres:16.11-alpine3.23
     restart: always
     env_file:
