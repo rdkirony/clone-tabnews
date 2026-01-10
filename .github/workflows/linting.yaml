@@ -3,7 +3,7 @@ name: Linting
 on: pull_request
 
 jobs:
-  jest:
+  prettier:
     name: Prettier
     runs-on: ubuntu-latest
     steps:
@@ -21,3 +21,21 @@ jobs:
       - run: npm ci
 
       - run: npm run lint:prettier:check
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-latest
+    steps:
+      #actions -> indica que iremos usar alguma extensão criada para ser usada
+      ##o link para encontrar é em https://github.com/marketplace
+      ##checkout@v6 -> indica que iremos utilizar a action criada chamada "checkout" na versão "v6"
+      ##a action checkout puxa o código do repositório para o cliente criado pelo workflow
+      - uses: actions/checkout@v6
+      ##a action setup-node configura a versão do node-js dentro do ambiente do workflow
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "lts/hydrogen"
+      ##npm ci utiliza estritamente as versões declaradas para as libs dentro do package-lock.json
+      ##npm install utiliza o package.json, portanto ele mesmo instala versões mais atualizadas das libs
+      - run: npm ci
+
+      - run: npm run eslint:check
